@@ -1,4 +1,7 @@
 const mysql = require('mysql2');
+const bcrypt = require('bcrypt');
+const users = require('./models/users');
+
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -6,6 +9,7 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
 });
+
 
 connection.connect((err) => {
   if (err) {
