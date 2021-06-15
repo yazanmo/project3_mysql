@@ -1,7 +1,5 @@
 const db = require('./../../db/db');
 const bcrypt = require('bcrypt');
-
-
 const createNewAuthor = async(req, res) => {
 	const password1 = req.body.password;    
 	const encryptedPassword = await bcrypt.hash(password1, 10)
@@ -13,8 +11,6 @@ const createNewAuthor = async(req, res) => {
 	const password=encryptedPassword;
 	const role_id=req.body.role_id;
 
-
-	//const passs=bcrypt.hash(password, 10)
 	const query = `INSERT INTO users (firstName, lastName, age, country, email, password,role_id) VALUES (?,?,?,?,?,?,?)`;
 	const data = [firstName, lastName, age, country, email,password,role_id];
 	db.query(query, data, (err, results) => {
@@ -24,10 +20,7 @@ const createNewAuthor = async(req, res) => {
 		console.log(results);
 		res.json(results)
 	});
-
-
 };
-
 module.exports = {
 	createNewAuthor,
 };
