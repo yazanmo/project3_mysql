@@ -1,21 +1,17 @@
 const db = require('./../../db/db');
 
 const getAllArticles = (req, res) => {
-	// articlesModel
-	// 	.find({})
-	// 	.then((result) => {
-	// 		res.status(200).json(result);
-	// 	})
-	// 	.catch((err) => {
-	// 		res.send(err);
-	// 	});
+	const query = `SELECT * FROM articles`;
+	db.query(query, (err, result) => {
+		if (err) throw err;
+		console.log('RESULT: ', result);
+		res.json(result)
+	});
 };
 
 const getArticlesByAuthor = (req, res) => {
 	// const author = req.query.author;
-
 	// if (!author) return res.status(404).json('not found');
-
 	// articlesModel
 	// 	.find({ author })
 	// 	.then((result) => {
@@ -25,12 +21,9 @@ const getArticlesByAuthor = (req, res) => {
 	// 		res.send(err);
 	// 	});
 };
-
 const getAnArticleById = (req, res) => {
 	// const _id = req.params.id;
-
 	// if (!_id) return res.status(404).json('not found');
-
 	// articlesModel
 	// 	.findOne({ _id })
 	// 	.populate('author', 'firstName -_id')
@@ -42,21 +35,17 @@ const getAnArticleById = (req, res) => {
 	// 		res.send(err);
 	// 	});
 };
-
 const createNewArticle = (req, res) => {
 	const { title, description, author_id } = req.body;
 	const query = `INSERT INTO articles (title, description,author_id ) VALUES (?,?,?)`;
-	const data = [title, description,author_id];
- 	db.query(query, data, (err, results) => {
+	const data = [title, description, author_id];
+	db.query(query, data, (err, results) => {
 		console.log(results);
 		res.json(results)
 	});
-
 };
-
 const updateAnArticleById = (req, res) => {
 	// const id = req.params.id;
-
 	// articlesModel
 	// 	.findByIdAndUpdate(id, req.body, { new: true })
 	// 	.then((result) => {
@@ -66,10 +55,8 @@ const updateAnArticleById = (req, res) => {
 	// 		res.send(err);
 	// 	});
 };
-
 const deleteArticleById = (req, res) => {
 	// const id = req.params.id;
-
 	// articlesModel
 	// 	.findByIdAndDelete(id)
 	// 	.then((result) => {
@@ -82,10 +69,8 @@ const deleteArticleById = (req, res) => {
 	// 		res.send(err);
 	// 	});
 };
-
 const deleteArticlesByAuthor = (req, res) => {
 	// const author = req.body.author;
-
 	// articlesModel
 	// 	.deleteMany({ author })
 	// 	.then((result) => {
@@ -98,7 +83,6 @@ const deleteArticlesByAuthor = (req, res) => {
 	// 		res.send(err);
 	// 	});
 };
-
 module.exports = {
 	getAllArticles,
 	getArticlesByAuthor,
