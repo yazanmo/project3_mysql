@@ -1,11 +1,11 @@
-USE MERAKI_Academy_Project_3;
+CREATE DATABASE  MERAKI_Academy_Project_3;
 
+USE MERAKI_Academy_Project_3;
 CREATE TABLE roles (
     role_id INT AUTO_INCREMENT NOT NULL,
     role VARCHAR(255) NOT NULL,
     PRIMARY KEY (role_id)
 );
-
 CREATE TABLE users(
     id INT AUTO_INCREMENT NOT NULL,
     firstName VARCHAR(255),
@@ -19,7 +19,6 @@ CREATE TABLE users(
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
-
 CREATE TABLE articles (
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR(255),
@@ -29,7 +28,6 @@ CREATE TABLE articles (
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
-
 CREATE TABLE comments(
     id INT AUTO_INCREMENT NOT NULL,
     comment VARCHAR(255),
